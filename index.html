@@ -3,117 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom Store | زوم استور</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Zoom Store | زوم استور لشحن الألعاب</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        body { background-color: #0f172a; color: white; font-family: 'Tajawal', sans-serif; }
-        .game-card { background: #1e293b; border: 2px solid transparent; transition: 0.3s; cursor: pointer; }
-        .game-card:hover { border-color: #f59e0b; transform: translateY(-5px); }
-        .game-card.active { border-color: #f59e0b; background: #2d313d; }
-        .input-style { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 12px; width: 100%; color: white; outline: none; }
-        .hidden-group { display: none; }
-        .show-group { display: block; }
-    </style>
 </head>
 <body>
 
-    <nav class="p-4 bg-slate-900 border-b border-gray-800 sticky top-0 z-50 flex justify-between items-center">
-        <div class="text-2xl font-bold text-amber-500">ZOOM STORE</div>
-        <div class="flex items-center gap-3">
-            <div class="bg-amber-500/10 border border-amber-500/50 px-3 py-1 rounded-full text-amber-500 text-sm font-bold">
-                <i class="fas fa-wallet ml-1"></i> <span id="balance">0</span> ج.س
-            </div>
+    <header>
+        <div class="logo">ZOOM STORE</div>
+        <div class="wallet-info">
+            <span>رصيد المحفظة: <strong id="balance">0</strong> ج.س</span>
+            <button onclick="showSection('deposit')">شحن المحفظة</button>
         </div>
-    </nav>
+    </header>
 
-    <main class="p-4 max-w-4xl mx-auto">
+    <main id="main-content">
         
-        <h2 class="text-xl font-bold mb-6 border-r-4 border-amber-500 pr-3">اختر قناة الشحن:</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <div onclick="selectGame('pubg')" id="card-pubg" class="game-card p-4 rounded-2xl text-center">
-                <img src="https://i.ibb.co/v4m0Y3L/pubg-logo.jpg" class="h-16 mx-auto mb-2 rounded-lg object-cover" alt="PUBG">
-                <span class="text-sm font-bold">شدات ببجي</span>
+        <section id="games">
+            <h2 class="section-title">اختر اللعبة للشحن</h2>
+            <div class="game-grid">
+                <div class="game-card" onclick="openOrder('eFootball', 'konami')">
+                    <img src="efootball-logo.jpg" alt="eFootball">
+                    <h3>eFootball</h3>
+                    <p>من 22,000ج إلى 368,000ج</p>
+                </div>
+                <div class="game-card" onclick="openOrder('FC Mobile', 'email-pass')">
+                    <img src="fc-mobile.jpg" alt="FC Mobile">
+                    <h3>FC Mobile</h3>
+                    <p>من 2,500ج إلى 406,000ج</p>
+                </div>
+                <div class="game-card" onclick="openOrder('PUBG Mobile', 'id-name')">
+                    <img src="pubg.jpg" alt="PUBG Mobile">
+                    <h3>PUBG Mobile</h3>
+                    <p>من 4,000ج إلى 164,000ج</p>
+                </div>
+                <div class="game-card" onclick="openOrder('Free Fire', 'id-name')">
+                    <img src="freefire.jpg" alt="Free Fire">
+                    <h3>Free Fire</h3>
+                    <p>من 4,000ج إلى 68,500ج</p>
+                </div>
             </div>
-            <div onclick="selectGame('ff')" id="card-ff" class="game-card p-4 rounded-2xl text-center">
-                <img src="https://i.ibb.co/7Xp7m7z/freefire-logo.jpg" class="h-16 mx-auto mb-2 rounded-lg object-cover" alt="Free Fire">
-                <span class="text-sm font-bold">جواهر فري فاير</span>
-            </div>
-            <div onclick="selectGame('fc')" id="card-fc" class="game-card p-4 rounded-2xl text-center">
-                <img src="https://i.ibb.co/L8zXhXN/fc-mobile.jpg" class="h-16 mx-auto mb-2 rounded-lg object-cover" alt="FC">
-                <span class="text-sm font-bold">FC Mobile</span>
-            </div>
-            <div onclick="selectGame('konami')" id="card-konami" class="game-card p-4 rounded-2xl text-center">
-                <img src="https://i.ibb.co/jTzX6Xz/efootball.jpg" class="h-16 mx-auto mb-2 rounded-lg object-cover" alt="eFootball">
-                <span class="text-sm font-bold">eFootball</span>
-            </div>
-        </div>
+        </section>
 
-        <div id="data-fields" class="bg-slate-800/50 p-6 rounded-3xl border border-gray-700 mb-10 hidden-group">
-            <h3 id="fields-title" class="text-amber-500 font-bold mb-4">أدخل بيانات الحساب:</h3>
-            
-            <div id="login-inputs" class="space-y-4 hidden-group">
-                <input type="email" placeholder="البريد الإلكتروني (الحساب)" class="input-style">
-                <input type="password" placeholder="كلمة السر" class="input-style">
+        <section id="deposit" class="hidden">
+            <h2 class="section-title">شحن المحفظة</h2>
+            <div class="payment-methods">
+                <div class="method">
+                    <img src="bankak.png" alt="بنكك">
+                    <p>بنكك: 3940669</p>
+                    <button onclick="copyToClipboard('3940669')">نسخ الرقم</button>
+                </div>
+                <div class="method">
+                    <img src="fawry.png" alt="فوري">
+                    <p>فوري: 52095569</p>
+                    <button onclick="copyToClipboard('52095569')">نسخ الرقم</button>
+                </div>
             </div>
-
-            <div id="id-inputs" class="space-y-4 hidden-group">
-                <input type="text" placeholder="أدخل الـ ID الخاص باللاعب" class="input-style">
+            <div class="upload-receipt">
+                <input type="file" id="receipt" accept="image/*">
+                <button class="btn-confirm" onclick="confirmDeposit()">تأكيد الشحن عبر واتساب</button>
             </div>
-
-            <button onclick="order()" class="w-full bg-amber-500 text-black font-bold py-4 rounded-2xl mt-6 shadow-lg hover:bg-amber-600 transition">تأكيد الطلب</button>
-        </div>
-
-        <h2 class="text-xl font-bold mb-6 border-r-4 border-amber-500 pr-3">شحن رصيد المحفظة:</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-slate-800 p-4 rounded-2xl text-center border border-gray-700">
-                <img src="https://i.ibb.co/GvXhXN/bankak.jpg" class="h-12 mx-auto mb-3" alt="بنكك">
-                <p class="text-xs text-gray-400">شيماء عبدالله إدريس</p>
-                <p class="font-bold my-1">3940669</p>
-                <button onclick="copy('3940669')" class="bg-red-600/20 text-red-500 px-4 py-1 rounded-full text-xs">نسخ</button>
-            </div>
-            <div class="bg-slate-800 p-4 rounded-2xl text-center border border-gray-700">
-                <img src="https://i.ibb.co/GvXhXN/fawry.jpg" class="h-12 mx-auto mb-3" alt="فوري">
-                <p class="text-xs text-gray-400">آسيا حسين عبدالله آدم</p>
-                <p class="font-bold my-1">52095569</p>
-                <button onclick="copy('52095569')" class="bg-blue-600/20 text-blue-500 px-4 py-1 rounded-full text-xs">نسخ</button>
-            </div>
-            <div class="bg-slate-800 p-4 rounded-2xl text-center border border-gray-700">
-                <img src="https://i.ibb.co/GvXhXN/mycashi.jpg" class="h-12 mx-auto mb-3" alt="ماي كاش">
-                <p class="text-xs text-gray-400">عبدالمنعم عبدالله</p>
-                <p class="font-bold my-1">401835173</p>
-                <button onclick="copy('401835173')" class="bg-purple-600/20 text-purple-500 px-4 py-1 rounded-full text-xs">نسخ</button>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <script>
-        function selectGame(game) {
-            document.querySelectorAll('.game-card').forEach(c => c.classList.remove('active'));
-            document.getElementById('card-' + game).classList.add('active');
-            document.getElementById('data-fields').classList.add('show-group');
+    <div id="orderModal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modalTitle">طلب شحن</h2>
+            <form id="orderForm">
+                <div id="inputGroup"></div>
+                <input type="number" placeholder="المبلغ المطلوب" required>
+                <button type="button" class="btn-send" onclick="sendToWhatsApp()">إرسال الطلب</button>
+                <button type="button" onclick="closeModal()">إغلاق</button>
+            </form>
+        </div>
+    </div>
 
-            if(game === 'fc' || game === 'konami') {
-                document.getElementById('login-inputs').classList.add('show-group');
-                document.getElementById('login-inputs').classList.remove('hidden-group');
-                document.getElementById('id-inputs').classList.add('hidden-group');
-            } else {
-                document.getElementById('id-inputs').classList.add('show-group');
-                document.getElementById('id-inputs').classList.remove('hidden-group');
-                document.getElementById('login-inputs').classList.add('hidden-group');
-            }
-        }
-
-        function copy(text) {
-            navigator.clipboard.writeText(text);
-            alert("تم نسخ الرقم بنجاح");
-        }
-
-        function order() {
-            window.open("https://wa.me/249117893591?text=طلب شحن من زوم استور");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
