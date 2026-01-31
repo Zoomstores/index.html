@@ -3,189 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom Store | زوم ستور للشحن الفوري</title>
+    <title>Zoom Store | زوم ستور للشحن</title>
     <style>
         :root {
-            --primary: #f39c12; /* اللون البرتقالي الجذاب */
+            --primary: #f39c12;
             --bg: #0b0d0f;
             --card: #161b22;
-            --text: #ffffff;
             --whatsapp: #25d366;
         }
 
         body {
             background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0; padding: 0;
         }
 
-        /* تنسيق الهيدر والشعار الجديد */
         header {
             background: linear-gradient(to bottom, #1c2128, #0b0d0f);
-            padding: 25px 15px;
+            padding: 20px;
             text-align: center;
             border-bottom: 3px solid var(--primary);
         }
 
-        .logo-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
+        .logo-text { font-size: 30px; font-weight: bold; letter-spacing: 2px; }
+        .logo-text span { color: var(--primary); }
 
-        .logo-icon {
-            font-size: 40px;
-            background: var(--primary);
-            color: black;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .store-name {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            color: var(--text);
-            text-transform: uppercase;
-        }
-
-        .store-name span { color: var(--primary); }
-
-        /* التنقل */
         .tabs-nav {
-            display: flex;
-            overflow-x: auto;
-            background: #1c2128;
-            padding: 10px;
-            position: sticky;
-            top: 0; z-index: 1000;
-            border-bottom: 1px solid #30363d;
+            display: flex; overflow-x: auto; background: #1c2128;
+            padding: 10px; position: sticky; top: 0; z-index: 100;
         }
 
         .tab-link {
-            flex: 0 0 auto;
-            padding: 10px 18px;
-            margin-left: 8px;
-            background: #0d1117;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            color: #8b949e;
-            border: 1px solid transparent;
+            flex: 0 0 auto; padding: 10px 15px; margin-left: 10px;
+            background: #0d1117; border-radius: 10px; border: 1px solid #333;
+            cursor: pointer; color: #8b949e; font-weight: bold;
         }
 
-        .tab-link.active {
-            background: rgba(243, 156, 18, 0.1);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
+        .tab-link.active { background: var(--primary); color: black; }
 
         .container { padding: 15px; max-width: 500px; margin: auto; }
 
         .game-section { display: none; }
-        .game-section.active { display: block; animation: fadeIn 0.4s; }
+        .game-section.active { display: block; animation: fadeIn 0.5s; }
 
-        .game-banner {
-            width: 100%;
-            height: 160px;
-            border-radius: 15px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 1px solid #30363d;
-        }
-
-        .section-title {
-            color: var(--primary);
-            border-right: 4px solid var(--primary);
-            padding-right: 10px;
-            margin: 15px 0;
-            font-size: 18px;
+        .banner-img {
+            width: 100%; border-radius: 15px; margin-bottom: 15px;
+            border: 1px solid #333; height: 180px; object-fit: cover;
         }
 
         .price-card {
-            background: var(--card);
-            border-radius: 12px;
-            margin-bottom: 8px;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #30363d;
+            background: var(--card); border-radius: 12px; padding: 15px;
+            margin-bottom: 10px; display: flex; justify-content: space-between;
+            align-items: center; border-right: 4px solid var(--primary);
         }
+
+        .payment-methods {
+            display: flex; justify-content: center; gap: 15px; padding: 20px;
+        }
+
+        .pay-icon { width: 50px; height: 50px; border-radius: 10px; object-fit: contain; background: white; padding: 2px; }
 
         .btn-buy {
-            background: var(--whatsapp);
-            color: white;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
+            background: var(--whatsapp); color: white; text-decoration: none;
+            padding: 8px 15px; border-radius: 8px; font-weight: bold; font-size: 14px;
         }
 
-        footer { text-align: center; padding: 30px; color: #484f58; font-size: 12px; background: #080a0c; }
-
-        @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-area">
-        <div class="logo-icon">⚡</div>
-        <div class="store-name">ZOOM <span>STORE</span></div>
-        <p style="font-size:12px; color:#8b949e; margin: 5px 0 0 0;">سرعة البرق في الشحن ⚡</p>
-    </div>
+    <div class="logo-text">ZOOM <span>STORE</span></div>
+    <p style="font-size: 12px; color: #8b949e;">متجرك الأول لشحن الألعاب في السودان 🇸🇩</p>
 </header>
 
 <div class="tabs-nav">
-    <div class="tab-link active" onclick="openGame(event, 'pubg')">ببجي (UC)</div>
+    <div class="tab-link active" onclick="openGame(event, 'pubg')">ببجي</div>
     <div class="tab-link" onclick="openGame(event, 'freefire')">فري فاير</div>
-    <div class="tab-link" onclick="openGame(event, 'pes')">بيس (eFootball)</div>
-    <div class="tab-link" onclick="openGame(event, 'fifa')">فيفا (FC)</div>
+    <div class="tab-link" onclick="openGame(event, 'pes')">بيس</div>
+    <div class="tab-link" onclick="openGame(event, 'fifa')">فيفا</div>
 </div>
 
 <div class="container">
     
     <div id="pubg" class="game-section active">
-        <img src="https://images.lucasfox.com/news/files/2021/01/PUBG-banner.jpg" class="game-banner">
-        <h3 class="section-title">شدات ببجي موبايل</h3>
+        <img src="https://i.ibb.co/LhqM9L7/pubg-banner.jpg" class="banner-img">
+        <h3>شدات ببجي (UC)</h3>
         <div class="price-card">
-            <div style="display:flex; flex-direction:column;">
-                <span style="font-weight:bold;">60 شدة</span>
-                <span style="color:var(--primary); font-size:13px;">4,000 ج</span>
-            </div>
-            <a href="https://wa.me/249117893591?text=طلب+ببجي+60+من+زوم+ستور" class="btn-buy">اطلب الآن</a>
+            <span>60 شدة</span>
+            <span style="color:var(--primary)">4,000 ج</span>
+            <a href="https://wa.me/249117893591?text=طلب+60+شدة" class="btn-buy">طلب</a>
         </div>
         </div>
 
     <div id="freefire" class="game-section">
-        <img src="https://wallpapers.com/images/featured/free-fire-pc-7p7p4p7p7p7p7p7p.jpg" class="game-banner">
-        <h3 class="section-title">جواهر فري فاير</h3>
+        <img src="https://i.ibb.co/pLp8B4k/freefire-banner.jpg" class="banner-img">
+        <h3>جواهر فري فاير</h3>
         <div class="price-card">
-            <div style="display:flex; flex-direction:column;">
-                <span style="font-weight:bold;">110 جوهرة</span>
-                <span style="color:var(--primary); font-size:13px;">4,000 ج</span>
-            </div>
-            <a href="https://wa.me/249117893591?text=طلب+فف+110+من+زوم+ستور" class="btn-buy">اطلب الآن</a>
+            <span>110 جوهرة</span>
+            <span style="color:var(--primary)">4,000 ج</span>
+            <a href="https://wa.me/249117893591?text=طلب+110+جوهرة" class="btn-buy">طلب</a>
         </div>
     </div>
 
+    <div id="pes" class="game-section">
+        <img src="https://i.ibb.co/Xz9Z4h8/efootball.jpg" class="banner-img">
+        <h3>كوينز بيس</h3>
+        <div class="price-card">
+            <span>550 كوينز</span>
+            <span style="color:var(--primary)">22,000 ج</span>
+            <a href="https://wa.me/249117893591?text=طلب+550+كوينز" class="btn-buy">طلب</a>
+        </div>
     </div>
 
+    <div id="fifa" class="game-section">
+        <img src="https://i.ibb.co/0Y4v4hX/fc-mobile.jpg" class="banner-img">
+        <h3>نقاط فيفا (FC)</h3>
+        <div class="price-card">
+            <span>520 Points</span>
+            <span style="color:var(--primary)">23,000 ج</span>
+            <a href="https://wa.me/249117893591?text=طلب+520+نقطة+فيفا" class="btn-buy">طلب</a>
+        </div>
+    </div>
+
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <p style="color: #8b949e; font-size: 14px;">طرق الدفع المدعومة</p>
+    <div class="payment-methods">
+        <img src="https://i.ibb.co/9V3f4Pz/fawry.jpg" class="pay-icon" title="فوري">
+        <img src="https://i.ibb.co/pP9Y4n8/mycashi.png" class="pay-icon" title="ماي كاشي">
+        <div style="background: white; color: purple; font-weight: bold; padding: 10px; border-radius: 10px;">بنكك</div>
+    </div>
+</div>
+
 <footer>
-    <p>طرق الدفع: بنكك | فوري | ماي كاشي</p>
-    <p>واتساب زوم ستور: 0117893591</p>
-    <p>© 2026 Zoom Store - جميع الحقوق محفوظة</p>
+    <p style="text-align: center; padding: 20px; color: #484f58; font-size: 12px;">
+        جميع الحقوق محفوظة لـ Zoom Store © 2026
+    </p>
 </footer>
 
 <script>
