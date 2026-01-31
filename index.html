@@ -15,67 +15,68 @@
             --whatsapp-green: #128c7e;
         }
 
-        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { box-sizing: border-box; font-family: 'Cairo', 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-light); margin: 0; padding-bottom: 80px; }
 
-        /* Header */
+        /* الهيدر العلوي */
         header {
             background: var(--white); padding: 15px; display: flex; 
             justify-content: space-between; align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;
         }
         .logo { font-weight: 900; color: var(--primary-blue); font-size: 1.2rem; }
-        .wallet-top { background: #eef2ff; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        .wallet-top { background: #eef2ff; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; cursor: pointer; }
 
-        /* Banner */
+        /* البانر الإعلاني */
         .hero { padding: 15px; }
         .banner {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             border-radius: 20px; padding: 25px; color: white; position: relative;
             overflow: hidden; min-height: 150px;
         }
-        .banner h2 { margin: 0; font-size: 1.2rem; width: 60%; line-height: 1.5; }
+        .banner h2 { margin: 0; font-size: 1.2rem; width: 65%; line-height: 1.5; }
 
-        /* Cards Grid */
-        .section-title { padding: 0 15px; font-size: 1.1rem; color: var(--dark-text); }
+        /* تنسيق كروت الألعاب */
+        .section-title { padding: 0 15px; font-size: 1.1rem; color: var(--dark-text); font-weight: bold; }
         .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; }
         .game-card {
             background: var(--white); border-radius: 15px; overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; transition: 0.3s;
         }
-        .card-img { height: 120px; background-size: cover; background-position: center; position: relative; }
+        .game-card:active { transform: scale(0.95); }
+        .card-img { height: 130px; background-size: cover; background-position: center; position: relative; }
         .card-badge {
             position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7);
             color: white; padding: 3px 8px; border-radius: 8px; font-size: 11px;
         }
         .card-info { padding: 10px; text-align: center; }
-        .card-info h4 { margin: 0; font-size: 14px; }
-        .price-range { color: var(--accent-blue); font-size: 12px; font-weight: bold; margin-top: 5px; }
+        .card-info h4 { margin: 0; font-size: 14px; color: var(--dark-text); }
+        .price-range { color: var(--accent-blue); font-size: 11px; font-weight: bold; margin-top: 5px; }
         
-        /* Support Button */
+        /* زر الدعم الفني */
         .support-link {
             display: flex; align-items: center; justify-content: center;
             background: var(--whatsapp-green); color: white; padding: 8px;
-            font-size: 13px; text-decoration: none; border-radius: 0 0 15px 15px;
+            font-size: 13px; text-decoration: none; border-top: 1px solid #eee;
         }
 
-        /* Bottom Nav */
+        /* القائمة السفلية العائمة */
         .bottom-nav {
-            position: fixed; bottom: 0; width: 100%; height: 70px;
+            position: fixed; bottom: 0; width: 100%; height: 75px;
             background: var(--white); display: flex; justify-content: space-around;
-            align-items: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            border-radius: 20px 20px 0 0; z-index: 1000;
+            align-items: center; box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+            border-radius: 25px 25px 0 0; z-index: 1000;
         }
         .nav-item { text-align: center; color: #9ca3af; font-size: 11px; flex: 1; cursor: pointer; }
-        .nav-item i { font-size: 20px; display: block; margin-bottom: 2px; }
+        .nav-item i { font-size: 22px; display: block; margin-bottom: 4px; }
         .nav-item.active { color: var(--primary-blue); }
         .center-home {
-            background: #333; color: white !important; width: 50px; height: 50px;
-            border-radius: 15px; display: flex; align-items: center; justify-content: center;
-            margin-top: -40px; border: 4px solid var(--bg-light);
+            background: #333; color: white !important; width: 55px; height: 55px;
+            border-radius: 18px; display: flex; align-items: center; justify-content: center;
+            margin-top: -45px; border: 5px solid var(--bg-light);
         }
 
-        /* Modals */
+        /* النوافذ المنبثقة (Modals) */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6); display: none; align-items: center;
@@ -83,23 +84,20 @@
         }
         .modal-content {
             background: white; padding: 25px; border-radius: 25px; width: 100%;
-            max-width: 400px; position: relative;
+            max-width: 400px; position: relative; animation: slideIn 0.3s ease-out;
         }
-        input, select {
-            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd;
-            border-radius: 10px; background: #f9fafb;
-        }
-        .btn-confirm {
-            background: var(--primary-blue); color: white; width: 100%;
-            padding: 15px; border-radius: 12px; border: none; font-weight: bold; margin-top: 10px;
-        }
-        .close-modal { position: absolute; top: 15px; left: 15px; font-size: 20px; color: #999; cursor: pointer; }
+        @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; background: #f9fafb; }
+        .btn-confirm { background: var(--primary-blue); color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        .close-modal { position: absolute; top: 15px; left: 15px; font-size: 24px; color: #999; cursor: pointer; }
         
         .payment-box {
             background: #f0f4ff; border: 1px dashed var(--accent-blue);
-            padding: 10px; border-radius: 10px; margin-bottom: 10px;
+            padding: 12px; border-radius: 12px; margin-bottom: 10px;
             display: flex; justify-content: space-between; align-items: center;
         }
+        .copy-btn { color: var(--accent-blue); cursor: pointer; }
     </style>
 </head>
 <body>
@@ -115,35 +113,36 @@
     <div class="hero">
         <div class="banner">
             <h2>كل ما تحتاجه لشحن لعبتك متوفر لدينا</h2>
-            <img src="https://via.placeholder.com/100x100?text=Games" style="position: absolute; left: 10px; bottom: 10px; opacity: 0.8;">
+            <div style="position: absolute; left: 10px; bottom: 10px; font-size: 50px; opacity: 0.3;"><i class="fas fa-gamepad"></i></div>
         </div>
     </div>
 
     <h3 class="section-title">الأكثر طلباً</h3>
     
     <div class="game-grid">
-        <div class="game-card" onclick="openOrder('FC Mobile', '2,500ج - 406,000ج', 'email-pass')">
-            <div class="card-img" style="background-image: url('https://via.placeholder.com/200x150?text=FC+Mobile');">
+        <div class="game-card" onclick="openOrder('FC Mobile', '2,500ج لـ 406,000ج', 'email-pass')">
+            <div class="card-img" style="background-image: url('https://via.placeholder.com/300x200/1e3a8a/ffffff?text=FC+Mobile');">
                 <span class="card-badge">FC Mobile</span>
             </div>
             <div class="card-info">
-                <h4>شحن فيفا موبايل</h4>
+                <h4>شحن FC Mobile</h4>
                 <div class="price-range">2,500ج - 406,000ج</div>
             </div>
         </div>
 
-        <div class="game-card" onclick="openOrder('PUBG Mobile', '4,000ج - 164,000ج', 'id-name')">
-            <div class="card-img" style="background-image: url('https://via.placeholder.com/200x150?text=PUBG');">
+        <div class="game-card" onclick="openOrder('PUBG Mobile', '4,000ج لـ 164,000ج', 'id-name')">
+            <div class="card-img" style="background-image: url('https://via.placeholder.com/300x200/1e3a8a/ffffff?text=PUBG');">
                 <span class="card-badge">PUBG Mobile</span>
             </div>
             <div class="card-info">
                 <h4>شدات ببجي</h4>
                 <div class="price-range">4,000ج - 164,000ج</div>
             </div>
+            <a href="#" class="support-link"><i class="fab fa-whatsapp"></i>&nbsp; الدعم الفني</a>
         </div>
 
-        <div class="game-card" onclick="openOrder('Free Fire', '4,000ج - 68,500ج', 'id-name')">
-            <div class="card-img" style="background-image: url('https://via.placeholder.com/200x150?text=Free+Fire');">
+        <div class="game-card" onclick="openOrder('Free Fire', '4,000ج لـ 68,500ج', 'id-name')">
+            <div class="card-img" style="background-image: url('https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Free+Fire');">
                 <span class="card-badge">Free Fire</span>
             </div>
             <div class="card-info">
@@ -152,8 +151,8 @@
             </div>
         </div>
 
-        <div class="game-card" onclick="openOrder('eFootball', '22,000ج - 368,000ج', 'konami')">
-            <div class="card-img" style="background-image: url('https://via.placeholder.com/200x150?text=eFootball');">
+        <div class="game-card" onclick="openOrder('eFootball', '22,000ج لـ 368,000ج', 'konami')">
+            <div class="card-img" style="background-image: url('https://via.placeholder.com/300x200/1e3a8a/ffffff?text=eFootball');">
                 <span class="card-badge">eFootball</span>
             </div>
             <div class="card-info">
@@ -165,6 +164,113 @@
 
     <nav class="bottom-nav">
         <div class="nav-item"><i class="fas fa-shopping-basket"></i><span>السلة</span></div>
-        <div class="nav-item"><i class="fas fa-list-check"></i><span>طلباتي</span></div>
+        <div class="nav-item"><i class="fas fa-list-ul"></i><span>طلباتي</span></div>
         <div class="nav-item center-home"><i class="fas fa-home"></i></div>
-        <div class="nav-item active" onclick="showDeposit()"><i class="fas fa-wallet"></i><span>محفظ
+        <div class="nav-item" onclick="showDeposit()"><i class="fas fa-wallet"></i><span>محفظتي</span></div>
+        <div class="nav-item"><i class="fas fa-user-circle"></i><span>حسابي</span></div>
+    </nav>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAll()">&times;</span>
+            <h3 id="m-title" style="color: var(--primary-blue);">طلب شحن</h3>
+            <p id="m-prices" style="font-size: 13px; color: #666; margin-bottom: 15px;"></p>
+            <div id="dynamic-fields"></div>
+            <input type="number" id="order-amt" placeholder="أدخل المبلغ المطلوب شحنه (ج.س)">
+            <button class="btn-confirm" onclick="submitOrder()">تأكيد الطلب عبر واتساب</button>
+        </div>
+    </div>
+
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAll()">&times;</span>
+            <h3 style="color: var(--primary-blue);">شحن المحفظة</h3>
+            <p style="font-size: 13px; color: #666;">قم بالتحويل لأحد الحسابات التالية وارفع الإيصال:</p>
+            
+            <div class="payment-box">
+                <span>تطبيق بنكك: <b>3940669</b></span>
+                <i class="fas fa-copy copy-btn" onclick="copyText('3940669')"></i>
+            </div>
+            <div class="payment-box">
+                <span>تطبيق فوري: <b>52095569</b></span>
+                <i class="fas fa-copy copy-btn" onclick="copyText('52095569')"></i>
+            </div>
+            <div class="payment-box">
+                <span>ماي كاش: <b>401835173</b></span>
+                <i class="fas fa-copy copy-btn" onclick="copyText('401835173')"></i>
+            </div>
+
+            <p style="font-size: 12px; margin-top: 15px;">إرفاق صورة الإيصال:</p>
+            <input type="file" id="receipt-img" accept="image/*">
+            <button class="btn-confirm" style="background: var(--whatsapp-green);" onclick="submitDeposit()">إرسال الإيصال للواتساب</button>
+        </div>
+    </div>
+
+    <script>
+        // فتح نافذة الطلب وتخصيص الحقول
+        function openOrder(game, prices, type) {
+            document.getElementById('m-title').innerText = "شحن " + game;
+            document.getElementById('m-prices').innerText = "نطاق الأسعار: " + prices;
+            let fields = document.getElementById('dynamic-fields');
+            fields.innerHTML = '';
+            
+            if(type === 'konami') {
+                fields.innerHTML = `
+                    <input id="f1" placeholder="بريد كونامي (Konami Email)">
+                    <input id="f2" type="password" placeholder="كلمة سر كونامي">`;
+            } else if(type === 'email-pass') {
+                fields.innerHTML = `
+                    <input id="f1" placeholder="البريد الإلكتروني للحساب">
+                    <input id="f2" type="password" placeholder="كلمة السر">`;
+            } else {
+                fields.innerHTML = `
+                    <input id="f1" placeholder="الـ ID الخاص باللاعب">
+                    <input id="f2" placeholder="اسم اللاعب في اللعبة">`;
+            }
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        // إظهار نافذة شحن الرصيد
+        function showDeposit() {
+            document.getElementById('depositModal').style.display = 'flex';
+        }
+
+        // إغلاق النوافذ
+        function closeAll() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        }
+
+        // نسخ أرقام الحسابات
+        function copyText(txt) {
+            navigator.clipboard.writeText(txt);
+            alert("تم نسخ الرقم بنجاح: " + txt);
+        }
+
+        // إرسال طلب الشحن للواتساب
+        function submitOrder() {
+            let gameName = document.getElementById('m-title').innerText;
+            let data1 = document.getElementById('f1').value;
+            let data2 = document.getElementById('f2').value;
+            let amount = document.getElementById('order-amt').value;
+
+            if(!data1 || !data2 || !amount) {
+                alert("يرجى إكمال كافة البيانات");
+                return;
+            }
+
+            let msg = `*طلب شحن من زوم استور*\n\n` +
+                      `🎮 اللعبة: ${gameName}\n` +
+                      `🔑 البيانات: ${data1} / ${data2}\n` +
+                      `💰 المبلغ: ${amount} ج.س`;
+            
+            window.open(`https://wa.me/249117893591?text=${encodeURIComponent(msg)}`);
+        }
+
+        // إرسال إيصال الشحن للواتساب
+        function submitDeposit() {
+            let msg = `*إشعار تحويل رصيد - زوم استور*\n\nيرجى تأكيد شحن محفظتي برصيد جديد. (مرفق صورة الإيصال)`;
+            window.open(`https://wa.me/249906231210?text=${encodeURIComponent(msg)}`);
+        }
+    </script>
+</body>
+</html>
