@@ -3,79 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom Store | زوم ستور</title>
+    <title>Zoom Store | زوم ستور للشحن</title>
     <style>
         :root { --primary: #f39c12; --bg: #0b0d0f; --card: #161b22; --whatsapp: #25d366; }
         body { background-color: var(--bg); color: white; font-family: sans-serif; margin: 0; padding: 0; }
         header { background: #1c2128; padding: 20px; text-align: center; border-bottom: 3px solid var(--primary); }
         .logo-container { display: flex; flex-direction: column; align-items: center; }
-        .speed-icon { width: 50px; border-radius: 50%; margin-bottom: 10px; }
-        .tabs-nav { display: flex; overflow-x: auto; background: #1c2128; padding: 10px; gap: 10px; }
-        .tab-link { padding: 10px 20px; background: #0d1117; border-radius: 10px; cursor: pointer; border: 1px solid #333; white-space: nowrap; }
-        .tab-link.active { background: var(--primary); color: black; }
+        .speed-icon { width: 60px; border-radius: 50%; margin-bottom: 10px; border: 2px solid var(--primary); }
+        .tabs-nav { display: flex; overflow-x: auto; background: #1c2128; padding: 10px; gap: 10px; position: sticky; top: 0; z-index: 100; }
+        .tab-link { padding: 10px 20px; background: #0d1117; border-radius: 10px; cursor: pointer; border: 1px solid #333; white-space: nowrap; font-weight: bold; color: #8b949e; }
+        .tab-link.active { background: var(--primary); color: black; border-color: var(--primary); }
         .container { padding: 15px; max-width: 500px; margin: auto; }
         .game-section { display: none; }
-        .game-section.active { display: block; }
-        .banner-img { width: 100%; border-radius: 15px; margin-bottom: 15px; height: 180px; object-fit: cover; }
-        .price-card { background: var(--card); border-radius: 12px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-right: 4px solid var(--primary); }
-        .btn-buy { background: var(--whatsapp); color: white; text-decoration: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; }
-        .payment-footer { text-align: center; padding: 20px; background: #080a0c; }
-        .pay-img { width: 60px; height: 60px; border-radius: 10px; margin: 5px; background: white; }
+        .game-section.active { display: block; animation: fadeIn 0.4s; }
+        .banner-img { width: 100%; border-radius: 15px; margin-bottom: 15px; height: 180px; object-fit: cover; border: 1px solid #333; }
+        .price-card { background: var(--card); border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-right: 4px solid var(--primary); }
+        .price-info div:first-child { font-weight: bold; font-size: 15px; }
+        .price-info div:last-child { color: var(--primary); font-size: 13px; margin-top: 4px; }
+        .btn-buy { background: var(--whatsapp); color: white; text-decoration: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; font-size: 13px; }
+        .payment-footer { text-align: center; padding: 25px; background: #080a0c; margin-top: 20px; border-top: 1px solid #333; }
+        .pay-img { width: 70px; height: 70px; border-radius: 12px; margin: 5px; background: white; object-fit: contain; padding: 5px; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="https://i.ibb.co/6R0rT8S/speed-icon.jpg" class="speed-icon"> <h1 style="margin:0;">ZOOM <span style="color:var(--primary)">STORE</span></h1>
+        <img src="https://i.ibb.co/6R0rT8S/speed-icon.jpg" class="speed-icon" alt="Zoom Speed">
+        <h1 style="margin:0; letter-spacing: 1px;">ZOOM <span style="color:var(--primary)">STORE</span></h1>
+        <p style="font-size: 12px; color: #8b949e; margin-top: 5px;">سرعة البرق في تنفيذ طلباتك ⚡</p>
     </div>
 </header>
 
 <div class="tabs-nav">
-    <div class="tab-link active" onclick="openGame(event, 'pubg')">ببجي</div>
+    <div class="tab-link active" onclick="openGame(event, 'pubg')">ببجي (UC)</div>
     <div class="tab-link" onclick="openGame(event, 'freefire')">فري فاير</div>
-    <div class="tab-link" onclick="openGame(event, 'pes')">بيس</div>
-    <div class="tab-link" onclick="openGame(event, 'fifa')">فيفا</div>
+    <div class="tab-link" onclick="openGame(event, 'pes')">eFootball</div>
+    <div class="tab-link" onclick="openGame(event, 'fifa')">FC Mobile</div>
 </div>
 
 <div class="container">
     <div id="pubg" class="game-section active">
         <img src="https://i.ibb.co/hZpYm8M/pubg.jpg" class="banner-img">
-        <h3>شدات ببجي</h3>
-        <div class="price-card"><span>60 شدة</span><span>4,000 ج</span><a href="https://wa.me/249117893591" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>60 شدة</div><div>4,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+ببجي+60+شدة" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>325 شدة</div><div>17,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+ببجي+325+شدة" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>660 شدة</div><div>35,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+ببجي+660+شدة" class="btn-buy">طلب</a></div>
     </div>
     
     <div id="freefire" class="game-section">
         <img src="https://i.ibb.co/yN0mBfS/freefire.jpg" class="banner-img">
-        <h3>جواهر فري فاير</h3>
-        <div class="price-card"><span>110 جوهرة</span><span>4,000 ج</span><a href="https://wa.me/249117893591" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>110 جوهرة</div><div>4,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+فري+فاير+110+جوهرة" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>231 جوهرة</div><div>8,500 ج</div></div><a href="https://wa.me/249117893591?text=طلب+فري+فاير+231+جوهرة" class="btn-buy">طلب</a></div>
     </div>
 
     <div id="pes" class="game-section">
         <img src="https://i.ibb.co/Xz9Z4h8/efootball.jpg" class="banner-img">
-        <h3>كوينز بيس</h3>
-        <div class="price-card"><span>550 كوينز</span><span>22,000 ج</span><a href="https://wa.me/249117893591" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>550 كوينز</div><div>22,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+بيس+550+كوينز" class="btn-buy">طلب</a></div>
     </div>
 
     <div id="fifa" class="game-section">
         <img src="https://i.ibb.co/0Y4v4hX/fc-mobile.jpg" class="banner-img">
-        <h3>نقاط فيفا</h3>
-        <div class="price-card"><span>520 نقطة</span><span>23,000 ج</span><a href="https://wa.me/249117893591" class="btn-buy">طلب</a></div>
+        <div class="price-card"><div class="price-info"><div>520 نقطة (Points)</div><div>23,000 ج</div></div><a href="https://wa.me/249117893591?text=طلب+فيفا+520+نقطة" class="btn-buy">طلب</a></div>
     </div>
 </div>
 
 <div class="payment-footer">
-    <p>طرق الدفع</p>
-    <img src="https://i.ibb.co/pP9Y4n8/mycashi.png" class="pay-img"> <img src="https://i.ibb.co/9V3f4Pz/fawry.jpg" class="pay-img">
+    <p style="margin-bottom: 15px; color: #8b949e; font-size: 14px;">طرق الدفع المدعومة</p>
+    <img src="https://i.ibb.co/pP9Y4n8/mycashi.png" class="pay-img" alt="MyCashi">
+    <img src="https://i.ibb.co/9V3f4Pz/fawry.jpg" class="pay-img" alt="Fawry">
+    <div style="background:white; color:#632d8d; font-weight:bold; padding:15px; border-radius:12px; display:inline-block; vertical-align:top; margin-top:5px; height: 35px; line-height: 35px; min-width: 60px;">بنكك</div>
 </div>
+
+<footer>
+    <p style="text-align: center; padding: 20px; color: #484f58; font-size: 11px;">
+        © 2026 Zoom Store | جميع الحقوق محفوظة لمتجر زوم
+    </p>
+</footer>
 
 <script>
     function openGame(evt, name) {
         var i, x = document.getElementsByClassName("game-section");
-        for (i = 0; i < x.length; i++) x[i].style.display = "none";
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+            x[i].classList.remove("active");
+        }
         document.getElementById(name).style.display = "block";
+        document.getElementById(name).classList.add("active");
         var links = document.getElementsByClassName("tab-link");
-        for (i = 0; i < links.length; i++) links[i].classList.remove("active");
+        for (i = 0; i < links.length; i++) {
+            links[i].classList.remove("active");
+        }
         evt.currentTarget.classList.add("active");
     }
 </script>
